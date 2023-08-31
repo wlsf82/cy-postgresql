@@ -1,15 +1,21 @@
 {
   "name": "cy-postgresql",
   "version": "1.0.0",
-  "description": "TBD.",
-  "main": "index.js",
+  "description": "Sample project to demonstrate how to interact with a PostgreSQL DB using Cypress.",
+  "main": "cypress.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "cypress open",
+    "test": "cypress run"
   },
-  "keywords": [],
+  "keywords": [
+    "cypress",
+    "postgresql",
+    "testing"
+  ],
   "author": "Walmyr <wlsf82@gmail.com> (https://walmyr.dev/)",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "^13.1.0"
+    "cypress": "^13.1.0",
+    "cypress-postgres-10v-compatibility": "^1.0.0"
   }
 }

@@ -1,3 +1,3 @@
-# cy-postgresql
+# Cypress PostgreSQL
 
-TBD.
+Sample project to demonstrate how to interact with a PostgreSQL DB using Cypress.
