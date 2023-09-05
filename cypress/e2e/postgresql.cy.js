@@ -1,4 +1,18 @@
 describe('PostgreSQL', () => {
+  beforeEach(() => {
+    // DELETE
+    cy.runSQL("DELETE FROM employee_data WHERE name='mary';")
+      .then(() => {
+        cy.log('Table row deleted')
+      })
+
+    // SELECT
+    cy.runSQL("SELECT * FROM employee_data WHERE name='mary';")
+      .then(queryResponse => {
+        expect(queryResponse.length).to.equal(0)
+      })
+  })
+
   it('queries on the `employee_data` table', () => {
     cy.runSQL('SELECT * FROM employee_data;')
       .then(queryResponse => {
@@ -13,7 +27,7 @@ describe('PostgreSQL', () => {
       })
   })
 
-  it('INSERT, SELECT, UPDATE, and DELETE into/from the `employee_data` table', () => {
+  it('INSERT, SELECT, and UPDATE into/from the `employee_data` table', () => {
     // INSERT
     cy.runSQL("INSERT INTO employee_data(name, age, designation, salary) VALUES ('mary', 30, 'ceo', 50000);")
 
@@ -47,18 +61,6 @@ describe('PostgreSQL', () => {
         const { designation } = queryResponse[0]
 
         expect(designation).to.equal('CEO')
-      })
-
-    // DELETE
-    cy.runSQL("DELETE FROM employee_data WHERE name='mary';")
-      .then(() => {
-        cy.log('Table row deleted!')
-      })
-
-    // SELECT
-    cy.runSQL("SELECT * FROM employee_data WHERE name='mary';")
-      .then(queryResponse => {
-        expect(queryResponse.length).to.equal(0)
       })
   })
 })
